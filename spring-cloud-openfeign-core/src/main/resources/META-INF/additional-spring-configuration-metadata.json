@@ -1,0 +1,54 @@
+{
+	"groups": [
+	],
+	"properties": [
+		{
+			"name": "feign.hystrix.enabled",
+			"type": "java.lang.Boolean",
+			"description": "If true, an OpenFeign client will be wrapped with a Hystrix circuit breaker.",
+			"defaultValue": "false"
+		},
+		{
+			"name": "feign.autoconfiguration.jackson.enabled",
+			"type": "java.lang.Boolean",
+			"description": "If true, PageJacksonModule and SortJacksonModule bean will be provided for Jackson page decoding.",
+			"defaultValue": "false"
+		},
+		{
+			"name": "feign.circuitbreaker.enabled",
+			"type": "java.lang.Boolean",
+			"description": "If true, an OpenFeign client will be wrapped with a Spring Cloud CircuitBreaker circuit breaker.",
+			"defaultValue": "false"
+		},
+		{
+			"name": "feign.httpclient.enabled",
+			"type": "java.lang.Boolean",
+			"description": "Enables the use of the Apache HTTP Client by Feign.",
+			"defaultValue": "true"
+		},
+		{
+			"name": "feign.okhttp.enabled",
+			"type": "java.lang.Boolean",
+			"description": "Enables the use of the OK HTTP Client by Feign.",
+			"defaultValue": "false"
+		},
+		{
+			"name": "feign.compression.response.enabled",
+			"type": "java.lang.Boolean",
+			"description": "Enables the response from Feign to be compressed.",
+			"defaultValue": "false"
+		},
+		{
+			"name": "feign.compression.response.useGzipDecoder",
+			"type": "java.lang.Boolean",
+			"description": "Enables the default gzip decoder to be used.",
+			"defaultValue": "false"
+		},
+		{
+			"name": "feign.compression.request.enabled",
+			"type": "java.lang.Boolean",
+			"description": "Enables the request sent by Feign to be compressed.",
+			"defaultValue": "false"
+		}
+	]
+}

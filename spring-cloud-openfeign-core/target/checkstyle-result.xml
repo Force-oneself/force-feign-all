@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.18">
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignCircuitBreakerDisabledConditions.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignClientBuilder.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/Targeter.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignCircuitBreakerInvocationHandler.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignClientSpecification.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignLoggerFactory.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignCircuitBreakerTargeter.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignClientsConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/DefaultFeignLoggerFactory.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignAutoConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignClientProperties.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignContext.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/encoding/HttpEncoding.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/encoding/BaseRequestInterceptor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/encoding/FeignClientEncodingProperties.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/encoding/FeignAcceptGzipEncodingAutoConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/encoding/FeignAcceptGzipEncodingInterceptor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/encoding/FeignContentGzipEncodingInterceptor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/encoding/FeignContentGzipEncodingAutoConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/loadbalancer/HttpClientFeignLoadBalancerConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/loadbalancer/OnRetryNotEnabledCondition.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/loadbalancer/OkHttpFeignLoadBalancerConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/loadbalancer/FeignBlockingLoadBalancerClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/loadbalancer/FeignLoadBalancerAutoConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/loadbalancer/DefaultFeignLoadBalancerConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/loadbalancer/RetryableFeignBlockingLoadBalancerClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/annotation/MatrixVariableParameterProcessor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/annotation/RequestParamParameterProcessor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/annotation/RequestPartParameterProcessor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/annotation/QueryMapParameterProcessor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/annotation/RequestHeaderParameterProcessor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/annotation/PathVariableParameterProcessor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/SpringQueryMap.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignClientFactoryBean.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignClientsRegistrar.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/FeignLoadBalancer.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/RibbonResponseStatusCodeException.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/DefaultFeignLoadBalancedConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/FeignRetryPolicy.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/CachingSpringLoadBalancerFactory.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/LoadBalancerFeignClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/FeignRibbonClientAutoConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/RetryableFeignLoadBalancer.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/HttpClientFeignLoadBalancedConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/ribbon/OkHttpFeignLoadBalancedConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignCircuitBreaker.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/SortJacksonModule.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/ResponseEntityDecoder.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/FeignUtils.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/DefaultGzipDecoderConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/AbstractFormWriter.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/SpringEncoder.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/DefaultGzipDecoder.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/PageableSpringEncoder.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/SortJsonComponent.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/JsonFormWriter.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/SpringMvcContract.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/FallbackCommand.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/PageJacksonModule.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/FeignHttpClientProperties.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/support/SpringDecoder.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/CollectionFormat.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/DefaultTargeter.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FallbackFactory.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignErrorDecoderFactory.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/clientconfig/FeignClientConfigurer.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/clientconfig/HttpClientFeignConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/clientconfig/OkHttpFeignConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/EnableFeignClients.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/AnnotatedParameterProcessor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/hateoas/FeignHalAutoConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignBuilderCustomizer.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/HystrixTargeter.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/main/java/org/springframework/cloud/openfeign/FeignFormatterRegistrar.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignContextTest.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/valid/FeignHttpClientTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/valid/FeignOkHttpTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/valid/FeignClientNotPrimaryTests.java">
+<error line="60" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="62" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="64" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="66" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/valid/IterableParameterTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/valid/scanning/FeignClientEnvVarTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/valid/scanning/FeignClientScanningTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/valid/FeignClientTests.java">
+<error line="124" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="126" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="128" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="130" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="132" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="875" column="3" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/valid/FeignClientValidationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignLoggerFactoryTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/test/NoSecurityConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/test/OkHttpClientConfigurationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/test/TestAutoConfiguration.java">
+<error line="36" column="1" severity="error" message="工具类应隐藏 public 构造器。" source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+<error line="41" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="43" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/test/ApacheHttpClientConfigurationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/EnableFeignClientsSpringDataTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignErrorDecoderFactoryTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignHttpClientConfigurationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignCompressionTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignClientsRegistrarTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignClientErrorDecoderTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignOkHttpConfigurationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/EnableFeignClientsTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/FeignAcceptEncodingTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/app/resource/InvoiceResource.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/app/domain/Invoice.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/app/client/InvoiceClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/proto/ProtobufSpringEncoderTest.java">
+<error line="58" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/proto/ProtobufNotInClasspathTest.java">
+<error line="33" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/proto/ProtobufTest.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/proto/RequestOrBuilder.java">
+<error line="26" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="29" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="31" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="34" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="36" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="39" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/proto/Request.java">
+<error line="22" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="29" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="31" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="210" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="213" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="217" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="220" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="233" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="236" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="347" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="494" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="497" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="501" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="504" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="504" column="28" severity="error" message="&apos;value&apos;需要Javadoc注释 @param 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="511" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="514" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="521" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="524" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="537" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="540" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="540" column="32" severity="error" message="&apos;value&apos;需要Javadoc注释 @param 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="550" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="553" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="566" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="569" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="569" column="61" severity="error" message="&apos;value&apos;需要Javadoc注释 @param 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+<error line="580" severity="error" message="Javadoc 首句应以句号结尾。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
+<error line="583" severity="error" message="需要一个 Javadoc注释 @return 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocMethodCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/FeignPageableEncodingTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/FeignContentEncodingTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/encoding/Invoices.java">
+<error line="31" column="1" severity="error" message="工具类应隐藏 public 构造器。" source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/loadbalancer/FeignBlockingLoadBalancerClientTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/loadbalancer/FeignLoadBalancerAutoConfigurationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/loadbalancer/RetryableFeignBlockingLoadBalancerClientTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/invalid/FeignClientValidationTests.java">
+<error line="47" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignHttpClientUrlTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/SpringDecoderTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/testclients/TestClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/FeignRibbonOkHttpClientConfigurationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/FeignRibbonClientPathTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/FeignRibbonHttpClientConfigurationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/LoadBalancerFeignClientOverrideTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/FeignRibbonClientRetryTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/FeignRibbonClientTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/RetryableFeignLoadBalancerTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/FeignLoadBalancerTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/RibbonResponseStatusCodeExceptionTest.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/ribbon/CachingSpringLoadBalancerFactoryTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/DefaultGzipDecoderTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/SpringRetryDisabledTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignBuilderCustomizerTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/PageableSupportTest.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/SpringMvcContractTests.java">
+<error line="852" column="3" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="862" column="3" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="874" column="3" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="876" column="3" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/SpringMvcContractIntegrationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/SpringEncoderTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/PageJacksonModuleTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/SpringMvcContractSlashEncodingIntegrationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/AbstractSpringMvcContractIntegrationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/FeignHttpClientPropertiesTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/PageableEncoderTests.java">
+<error line="48" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="50" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="52" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+<error line="54" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/support/SortJacksonModuleTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/beans/TestClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/beans/FeignClientMockBeanTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/beans/extra/TestClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/beans/FeignClientTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignClientFactoryTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hystrix/security/app/UsernameController.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hystrix/security/app/TestInterceptor.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hystrix/security/app/ProxyUsernameController.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hystrix/security/app/UsernameClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hystrix/security/app/CustomConcurrenyStrategy.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hystrix/security/HystrixSecurityTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hystrix/security/HystrixSecurityApplication.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignClientOverrideDefaultsTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignClientUsingPropertiesTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/SpringRetryEnabledTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignClientBuilderTests.java">
+<error line="46" column="2" severity="error" message="缺少 Javadoc 。" source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocVariableCheck"/>
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hateoas/app/FeignHalController.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hateoas/app/FeignHalApplication.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hateoas/app/FeignHalRibbonConfiguration.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hateoas/app/FeignHalClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hateoas/app/MarsRover.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hateoas/FeignHalTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hateoas/FeignHalAutoConfigurationContextTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/hateoas/FeignHalAutoConfigurationTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/feignclientsregistrar/sub/SubLevelClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/feignclientsregistrar/TopLevelClient.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/circuitbreaker/MyCircuitBreaker.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/circuitbreaker/Hello.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/circuitbreaker/CircuitBreakerWithNoFallbackTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/circuitbreaker/CircuitBreakerTests.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/java/org/springframework/cloud/openfeign/FeignClientUsingConfigurerTest.java">
+</file>
+<file name="/Users/forceoneself/IdeaProjects/spring-cloud-openfeign-2.2.7.RELEASE/spring-cloud-openfeign-core/src/test/resources/feign-properties.properties">
+</file>
+</checkstyle>
