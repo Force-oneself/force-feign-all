@@ -16,23 +16,10 @@
 
 package org.springframework.cloud.openfeign;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
-
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinitionHolder;
-import org.springframework.beans.factory.config.BeanExpressionContext;
-import org.springframework.beans.factory.config.BeanExpressionResolver;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.beans.factory.config.*;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
@@ -49,6 +36,15 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
+
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Spencer Gibb
@@ -221,7 +217,7 @@ class FeignClientsRegistrar
 
 		String contextId = getContextId(beanFactory, attributes);
 		String name = getName(attributes);
-		// FeignClient底层通过FactoryBean实现
+		// Force-Spring OpenFeign重点：FeignClient底层通过FactoryBean实现
 		FeignClientFactoryBean factoryBean = new FeignClientFactoryBean();
 		factoryBean.setBeanFactory(beanFactory);
 		factoryBean.setName(name);
@@ -250,6 +246,7 @@ class FeignClientsRegistrar
 					}
 					return factoryBean.getObject();
 				});
+		// 根据类型注入
 		definition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
 		// 默认懒加载
 		definition.setLazyInit(true);
@@ -265,6 +262,7 @@ class FeignClientsRegistrar
 		// 设置默认Bean
 		beanDefinition.setPrimary(primary);
 
+		// 获取Bean的匹配名
 		String qualifier = getQualifier(attributes);
 		if (StringUtils.hasText(qualifier)) {
 			alias = qualifier;

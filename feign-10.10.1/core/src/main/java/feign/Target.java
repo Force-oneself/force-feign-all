@@ -29,13 +29,19 @@ import static feign.Util.emptyToNull;
  */
 public interface Target<T> {
 
-  /* The type of the interface this target applies to. ex. {@code Route53}. */
+  /**
+   *  The type of the interface this target applies to. ex. {@code Route53}.
+   */
   Class<T> type();
 
-  /* configuration key associated with this target. For example, {@code route53}. */
+  /**
+   * configuration key associated with this target. For example, {@code route53}.
+   */
   String name();
 
-  /* base HTTP URL of the target. For example, {@code https://api/v2}. */
+  /**
+   *  base HTTP URL of the target. For example, {@code https://api/v2}.
+   */
   String url();
 
   /**

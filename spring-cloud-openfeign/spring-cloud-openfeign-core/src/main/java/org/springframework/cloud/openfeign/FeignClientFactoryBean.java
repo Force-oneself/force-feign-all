@@ -16,33 +16,14 @@
 
 package org.springframework.cloud.openfeign;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-
-import feign.Client;
-import feign.Contract;
-import feign.ExceptionPropagationPolicy;
-import feign.Feign;
-import feign.Logger;
-import feign.QueryMapEncoder;
-import feign.Request;
-import feign.RequestInterceptor;
-import feign.Retryer;
+import feign.*;
 import feign.Target.HardCodedTarget;
 import feign.codec.Decoder;
 import feign.codec.Encoder;
 import feign.codec.ErrorDecoder;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.*;
 import org.springframework.cloud.openfeign.clientconfig.FeignClientConfigurer;
 import org.springframework.cloud.openfeign.loadbalancer.FeignBlockingLoadBalancerClient;
 import org.springframework.cloud.openfeign.ribbon.LoadBalancerFeignClient;
@@ -51,6 +32,12 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.annotation.AnnotationAwareOrderComparator;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Spencer Gibb
@@ -102,6 +89,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 	}
 
 	protected Feign.Builder feign(FeignContext context) {
+		// 根据FeignContext获取到对应的配置实例信息
 		FeignLoggerFactory loggerFactory = get(context, FeignLoggerFactory.class);
 		Logger logger = loggerFactory.create(type);
 
@@ -109,12 +97,16 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 		Feign.Builder builder = get(context, Feign.Builder.class)
 				// required values
 				.logger(logger)
+				// 编码
 				.encoder(get(context, Encoder.class))
+				// 解码
 				.decoder(get(context, Decoder.class))
 				.contract(get(context, Contract.class));
 		// @formatter:on
 
+		// 配置Feign的属性信息通过配置文件
 		configureFeign(context, builder);
+
 		applyBuildCustomizers(context, builder);
 
 		return builder;
@@ -127,12 +119,14 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 		if (customizerMap != null) {
 			customizerMap.values().stream()
 					.sorted(AnnotationAwareOrderComparator.INSTANCE)
+					// Force-Spring 拓展点：FeignBuilderCustomizer自定义配置Feign的配置
 					.forEach(feignBuilderCustomizer -> feignBuilderCustomizer
 							.customize(builder));
 		}
 	}
 
 	protected void configureFeign(FeignContext context, Feign.Builder builder) {
+		// 获取到properties
 		FeignClientProperties properties = beanFactory != null
 				? beanFactory.getBean(FeignClientProperties.class)
 				: applicationContext.getBean(FeignClientProperties.class);
@@ -141,15 +135,21 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 				FeignClientConfigurer.class);
 		setInheritParentContext(feignClientConfigurer.inheritParentConfiguration());
 
+		// 配置各种属性
 		if (properties != null && inheritParentContext) {
+			// 是否使用配置文件为默认配置
 			if (properties.isDefaultToProperties()) {
+				// 配置上述的配置的相关类
 				configureUsingConfiguration(context, builder);
+				// 配置属性文件中的默认配置
 				configureUsingProperties(
 						properties.getConfig().get(properties.getDefaultConfig()),
 						builder);
+				// 配置属性文件中@FeignClient的配置，将会覆盖上述配置
 				configureUsingProperties(properties.getConfig().get(contextId), builder);
 			}
 			else {
+				// 与上述一样只是与configureUsingConfiguration交换位置
 				configureUsingProperties(
 						properties.getConfig().get(properties.getDefaultConfig()),
 						builder);
@@ -158,6 +158,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 			}
 		}
 		else {
+			// 仅仅配置内部的相关配置
 			configureUsingConfiguration(context, builder);
 		}
 	}
@@ -355,9 +356,10 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 		FeignContext context = beanFactory != null
 				? beanFactory.getBean(FeignContext.class)
 				: applicationContext.getBean(FeignContext.class);
+		// 初始化Feign的一些配置
 		Feign.Builder builder = feign(context);
 
-		// 未设置url
+		// Force-Spring 知识点：配置了url无法使用负载均衡
 		if (!StringUtils.hasText(url)) {
 			if (!name.startsWith("http")) {
 				url = "http://" + name;
@@ -367,15 +369,19 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 			}
 			// 拼接路径
 			url += cleanPath();
+			// 负载均衡
 			return (T) loadBalance(builder, context,
 					new HardCodedTarget<>(type, name, url));
 		}
 		if (StringUtils.hasText(url) && !url.startsWith("http")) {
 			url = "http://" + url;
 		}
+		// 完整的请求路径
 		String url = this.url + cleanPath();
+		// 获取到配置的客户端
 		Client client = getOptional(context, Client.class);
 		if (client != null) {
+			// 这两种客户端都是代理类实现所有需要获取到实际的客户端
 			if (client instanceof LoadBalancerFeignClient) {
 				// 没有负载平衡，因为我们有一个 url，但功能区在类路径上，所以解开
 				client = ((LoadBalancerFeignClient) client).getDelegate();
@@ -386,6 +392,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 			}
 			builder.client(client);
 		}
+		// 获取代理器
 		Targeter targeter = get(context, Targeter.class);
 		// 开始生成代理类
 		return (T) targeter.target(this, builder, context,
@@ -393,11 +400,14 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 	}
 
 	private String cleanPath() {
+		// 去除首尾空白
 		String path = this.path.trim();
 		if (StringUtils.hasLength(path)) {
+			// 给首位添加【/】
 			if (!path.startsWith("/")) {
 				path = "/" + path;
 			}
+			// 去除末尾【/】
 			if (path.endsWith("/")) {
 				path = path.substring(0, path.length() - 1);
 			}

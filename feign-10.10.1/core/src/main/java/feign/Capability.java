@@ -13,13 +13,14 @@
  */
 package feign;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
-import java.util.List;
 import feign.Logger.Level;
 import feign.Request.Options;
 import feign.codec.Decoder;
 import feign.codec.Encoder;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Capabilities expose core feign artifacts to implementations so parts of core can be customized
@@ -48,7 +49,7 @@ public interface Capability {
         // Contract enrichedContract = cap3.enrich(cap2.enrich(cap1.enrich(contract)));
         .reduce(
             componentToEnrich,
-            (component, capability) -> invoke(component, capability),
+                Capability::invoke,
             (component, enrichedComponent) -> enrichedComponent);
   }
 

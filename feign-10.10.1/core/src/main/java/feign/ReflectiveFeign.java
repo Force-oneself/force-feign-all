@@ -13,18 +13,23 @@
  */
 package feign;
 
-import static feign.Util.checkArgument;
-import static feign.Util.checkNotNull;
+import feign.InvocationHandlerFactory.MethodHandler;
+import feign.Param.Expander;
+import feign.Request.Options;
+import feign.codec.Decoder;
+import feign.codec.EncodeException;
+import feign.codec.Encoder;
+import feign.codec.ErrorDecoder;
+import feign.template.UriUtils;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.*;
 import java.util.Map.Entry;
-import feign.InvocationHandlerFactory.MethodHandler;
-import feign.Param.Expander;
-import feign.Request.Options;
-import feign.codec.*;
-import feign.template.UriUtils;
+
+import static feign.Util.checkArgument;
+import static feign.Util.checkNotNull;
 
 public class ReflectiveFeign extends Feign {
 
@@ -46,6 +51,7 @@ public class ReflectiveFeign extends Feign {
   @SuppressWarnings("unchecked")
   @Override
   public <T> T newInstance(Target<T> target) {
+    // 根据接口类和Contract协议解析方式，解析接口类上的方法和注解，转换成内部的MethodHandler处理方式
     Map<String, MethodHandler> nameToHandler = targetToHandlersByName.apply(target);
     Map<Method, MethodHandler> methodToHandler = new LinkedHashMap<Method, MethodHandler>();
     List<DefaultMethodHandler> defaultMethodHandlers = new LinkedList<DefaultMethodHandler>();
@@ -61,6 +67,7 @@ public class ReflectiveFeign extends Feign {
         methodToHandler.put(method, nameToHandler.get(Feign.configKey(target.type(), method)));
       }
     }
+
     InvocationHandler handler = factory.create(target, methodToHandler);
     T proxy = (T) Proxy.newProxyInstance(target.type().getClassLoader(),
         new Class<?>[] {target.type()}, handler);

@@ -13,15 +13,11 @@
  */
 package feign;
 
-import static feign.Util.CONTENT_ENCODING;
-import static feign.Util.CONTENT_LENGTH;
-import static feign.Util.ENCODING_DEFLATE;
-import static feign.Util.ENCODING_GZIP;
-import static feign.Util.checkArgument;
-import static feign.Util.checkNotNull;
-import static feign.Util.isBlank;
-import static feign.Util.isNotBlank;
-import static java.lang.String.format;
+import feign.Request.Options;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,17 +25,12 @@ import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
-import java.util.Collection;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.GZIPOutputStream;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSocketFactory;
-import feign.Request.Options;
+
+import static feign.Util.*;
+import static java.lang.String.format;
 
 /**
  * Submits HTTP {@link Request requests}. Implementations are expected to be thread-safe.
@@ -105,7 +96,10 @@ public interface Client {
     }
 
     Response convertResponse(HttpURLConnection connection, Request request) throws IOException {
+      // 响应状态
       int status = connection.getResponseCode();
+
+      // 消息
       String reason = connection.getResponseMessage();
 
       if (status < 0) {
@@ -114,6 +108,7 @@ public interface Client {
       }
 
       Map<String, Collection<String>> headers = new LinkedHashMap<>();
+      // 保存Header
       for (Map.Entry<String, List<String>> field : connection.getHeaderFields().entrySet()) {
         // response message
         if (field.getKey() != null) {

@@ -13,16 +13,18 @@
  */
 package feign;
 
+import feign.InvocationHandlerFactory.MethodHandler;
+import feign.Request.Options;
+import feign.codec.Decoder;
+import feign.codec.ErrorDecoder;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
-import feign.InvocationHandlerFactory.MethodHandler;
-import feign.Request.Options;
-import feign.codec.Decoder;
-import feign.codec.ErrorDecoder;
+
 import static feign.ExceptionPropagationPolicy.UNWRAP;
 import static feign.FeignException.errorExecuting;
 import static feign.Util.checkNotNull;
@@ -81,6 +83,7 @@ final class SynchronousMethodHandler implements MethodHandler {
 
   @Override
   public Object invoke(Object[] argv) throws Throwable {
+    // 构建请求模版
     RequestTemplate template = buildTemplateFromArgs.create(argv);
     Options options = findOptions(argv);
     Retryer retryer = this.retryer.clone();
@@ -116,6 +119,7 @@ final class SynchronousMethodHandler implements MethodHandler {
     Response response;
     long start = System.nanoTime();
     try {
+      // 执行请求
       response = client.execute(request, options);
       // ensure the request is set. TODO: remove in Feign 12
       response = response.toBuilder()
@@ -158,6 +162,7 @@ final class SynchronousMethodHandler implements MethodHandler {
 
   Request targetRequest(RequestTemplate template) {
     for (RequestInterceptor interceptor : requestInterceptors) {
+      // Force-Spring 拓展点：RequestInterceptor执行apply
       interceptor.apply(template);
     }
     return target.apply(template);
