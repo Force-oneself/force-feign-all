@@ -16,9 +16,6 @@
 
 package org.springframework.cloud.openfeign;
 
-import java.lang.reflect.Field;
-import java.util.Objects;
-
 import feign.Client;
 import feign.Feign;
 import feign.Target;
@@ -27,7 +24,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,6 +38,9 @@ import org.springframework.util.SocketUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.lang.reflect.Field;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT;
@@ -163,8 +162,7 @@ public class FeignHttpClientUrlTests {
 				@Override
 				public <T> T target(FeignClientFactoryBean factory, Feign.Builder feign,
 						FeignContext context, Target.HardCodedTarget<T> target) {
-					Field field = ReflectionUtils.findField(Feign.Builder.class,
-							"client");
+					Field field = ReflectionUtils.findField(Feign.Builder.class, "client");
 					ReflectionUtils.makeAccessible(field);
 					Client client = (Client) ReflectionUtils.getField(field, feign);
 					if (target.name().equals("localappurl")) {

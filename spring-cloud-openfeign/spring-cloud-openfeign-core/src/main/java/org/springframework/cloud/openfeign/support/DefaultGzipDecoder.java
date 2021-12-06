@@ -16,6 +16,11 @@
 
 package org.springframework.cloud.openfeign.support;
 
+import feign.FeignException;
+import feign.Response;
+import feign.codec.Decoder;
+import org.springframework.cloud.openfeign.encoding.HttpEncoding;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,12 +28,6 @@ import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.zip.GZIPInputStream;
-
-import feign.FeignException;
-import feign.Response;
-import feign.codec.Decoder;
-
-import org.springframework.cloud.openfeign.encoding.HttpEncoding;
 
 /**
  * When response is compressed as gzip, this decompresses and uses {@link SpringDecoder}
@@ -47,10 +46,7 @@ public class DefaultGzipDecoder implements Decoder {
 	@Override
 	public Object decode(final Response response, Type type)
 			throws IOException, FeignException {
-		Collection<String> encoding = response.headers()
-				.containsKey(HttpEncoding.CONTENT_ENCODING_HEADER)
-						? response.headers().get(HttpEncoding.CONTENT_ENCODING_HEADER)
-						: null;
+		Collection<String> encoding = response.headers().getOrDefault(HttpEncoding.CONTENT_ENCODING_HEADER, null);
 
 		if (encoding != null) {
 			if (encoding.contains(HttpEncoding.GZIP_ENCODING)) {

@@ -30,7 +30,7 @@ import static feign.Util.emptyToNull;
 public interface Target<T> {
 
   /**
-   *  The type of the interface this target applies to. ex. {@code Route53}.
+   *  此目标适用的接口类型。 前任。 Route53 。
    */
   Class<T> type();
 

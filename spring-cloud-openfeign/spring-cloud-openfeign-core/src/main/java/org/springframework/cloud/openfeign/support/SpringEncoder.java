@@ -16,15 +16,6 @@
 
 package org.springframework.cloud.openfeign.support;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.reflect.Type;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.Collection;
-import java.util.Objects;
-
 import feign.Request;
 import feign.RequestTemplate;
 import feign.codec.EncodeException;
@@ -32,7 +23,6 @@ import feign.codec.Encoder;
 import feign.form.spring.SpringFormEncoder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.openfeign.encoding.HttpEncoding;
@@ -45,6 +35,15 @@ import org.springframework.http.converter.HttpMessageConversionException;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.reflect.Type;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Collection;
+import java.util.Objects;
 
 import static org.springframework.cloud.openfeign.support.FeignUtils.getHeaders;
 import static org.springframework.cloud.openfeign.support.FeignUtils.getHttpHeaders;
@@ -80,6 +79,7 @@ public class SpringEncoder implements Encoder {
 			throws EncodeException {
 		// template.body(conversionService.convert(object, String.class));
 		if (requestBody != null) {
+			// 获取Content-Type的属性值
 			Collection<String> contentTypes = request.headers()
 					.get(HttpEncoding.CONTENT_TYPE);
 
@@ -89,11 +89,14 @@ public class SpringEncoder implements Encoder {
 				requestContentType = MediaType.valueOf(type);
 			}
 
+			// multipart/form-data
 			if (Objects.equals(requestContentType, MediaType.MULTIPART_FORM_DATA)) {
+				// 用SpringFormEncoder解析
 				this.springFormEncoder.encode(requestBody, bodyType, request);
 				return;
 			}
 			else {
+				// 文件上传
 				if (bodyType == MultipartFile.class) {
 					log.warn(
 							"For MultipartFile to be handled correctly, the 'consumes' parameter of @RequestMapping "
@@ -101,6 +104,7 @@ public class SpringEncoder implements Encoder {
 				}
 			}
 
+			// 消息转换器
 			for (HttpMessageConverter messageConverter : this.messageConverters
 					.getObject().getConverters()) {
 				FeignOutputMessage outputMessage;

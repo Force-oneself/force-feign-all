@@ -16,13 +16,12 @@
 
 package org.springframework.cloud.openfeign.annotation;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
-
 import feign.MethodMetadata;
-
 import org.springframework.cloud.openfeign.AnnotatedParameterProcessor;
 import org.springframework.cloud.openfeign.SpringQueryMap;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 
 /**
  * {@link SpringQueryMap} parameter processor.
@@ -46,7 +45,7 @@ public class QueryMapParameterProcessor implements AnnotatedParameterProcessor {
 		MethodMetadata metadata = context.getMethodMetadata();
 		if (metadata.queryMapIndex() == null) {
 			metadata.queryMapIndex(paramIndex);
-			metadata.queryMapEncoded(SpringQueryMap.class.cast(annotation).encoded());
+			metadata.queryMapEncoded(((SpringQueryMap) annotation).encoded());
 		}
 		return true;
 	}

@@ -8,6 +8,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 /**
  * @author Force-oneself
@@ -26,7 +27,7 @@ public class ParamLogRequestInterceptor implements RequestInterceptor {
 			HttpServletRequest request = attributes.getRequest();
 			template.header("sessionId", request.getHeader("sessionId"));
 		}
-		switch (template.method()) {
+		switch (Objects.requireNonNull(template.method())) {
 			case "GET":
 				log.info("{}OpenFeign GET请求，请求路径：【{}", System.lineSeparator(), template.url());
 				break;

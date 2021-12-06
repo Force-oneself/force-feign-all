@@ -156,7 +156,7 @@ class FeignClientsRegistrar
 			else {
 				name = "default." + metadata.getClassName();
 			}
-			// 注册一个特殊的Bean FeignClientSpecification
+			// 注册一个默认配置的Bean FeignClientSpecification
 			registerClientConfiguration(registry, name, defaultAttrs.get("defaultConfiguration"));
 		}
 	}
@@ -165,12 +165,12 @@ class FeignClientsRegistrar
 
 		LinkedHashSet<BeanDefinition> candidateComponents = new LinkedHashSet<>();
 		Map<String, Object> attrs = metadata.getAnnotationAttributes(EnableFeignClients.class.getName());
-		final Class<?>[] clients = attrs == null
-			? null : (Class<?>[]) attrs.get("clients");
+		final Class<?>[] clients = attrs == null ? null : (Class<?>[]) attrs.get("clients");
 		// 未设置@FeignClient的类，启动类路径扫描
 		if (clients == null || clients.length == 0) {
 			ClassPathScanningCandidateComponentProvider scanner = getScanner();
 			scanner.setResourceLoader(this.resourceLoader);
+			// 扫描@FeignClient注解
 			scanner.addIncludeFilter(new AnnotationTypeFilter(FeignClient.class));
 			// 获取扫描路径
 			Set<String> basePackages = getBasePackages(metadata);
@@ -187,7 +187,7 @@ class FeignClientsRegistrar
 
 		for (BeanDefinition candidateComponent : candidateComponents) {
 			if (candidateComponent instanceof AnnotatedBeanDefinition) {
-				// 验证带注释的类是一个接口
+				// 验证带注解的类是一个接口
 				AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) candidateComponent;
 				AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
 				// @FeignClient只能添加在接口上
@@ -198,7 +198,7 @@ class FeignClientsRegistrar
 						.getAnnotationAttributes(FeignClient.class.getCanonicalName());
 				// 设置Client Bean的name，按这个顺序读取：contextId -> value -> name -> serviceId -> 抛出异常
 				String name = getClientName(attributes);
-				// 注册一个特殊的Bean FeignClientSpecification
+				// 注册一个默认的Bean FeignClientSpecification
 				registerClientConfiguration(registry, name, attributes.get("configuration"));
 				// 注册FeignClient
 				registerFeignClient(registry, annotationMetadata, attributes);
@@ -311,6 +311,7 @@ class FeignClientsRegistrar
 	private String resolve(ConfigurableBeanFactory beanFactory, String value) {
 		if (StringUtils.hasText(value)) {
 			if (beanFactory == null) {
+				// 解析占位符 ${..}
 				return this.environment.resolvePlaceholders(value);
 			}
 			BeanExpressionResolver resolver = beanFactory.getBeanExpressionResolver();
@@ -318,14 +319,14 @@ class FeignClientsRegistrar
 			if (resolver == null) {
 				return resolved;
 			}
-			return String.valueOf(resolver.evaluate(resolved,
-					new BeanExpressionContext(beanFactory, null)));
+			return String.valueOf(resolver.evaluate(resolved, new BeanExpressionContext(beanFactory, null)));
 		}
 		return value;
 	}
 
 	private String getUrl(ConfigurableBeanFactory beanFactory,
 			Map<String, Object> attributes) {
+		// 解析Url，占位符等解析
 		String url = resolve(beanFactory, (String) attributes.get("url"));
 		return getUrl(url);
 	}
@@ -374,7 +375,7 @@ class FeignClientsRegistrar
 		for (Class<?> clazz : (Class[]) attributes.get("basePackageClasses")) {
 			basePackages.add(ClassUtils.getPackageName(clazz));
 		}
-		// 上面都没有设置，此时回找标注@EnableFeignClients的类路径
+		// 上面都没有设置，此时会找标注@EnableFeignClients的类路径
 		if (basePackages.isEmpty()) {
 			basePackages.add(
 					ClassUtils.getPackageName(importingClassMetadata.getClassName()));
@@ -386,6 +387,7 @@ class FeignClientsRegistrar
 		if (client == null) {
 			return null;
 		}
+		// 如果qualifier存在将其设置为Bean的别名
 		String qualifier = (String) client.get("qualifier");
 		if (StringUtils.hasText(qualifier)) {
 			return qualifier;

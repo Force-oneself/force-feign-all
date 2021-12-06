@@ -13,13 +13,6 @@
  */
 package feign;
 
-import java.io.IOException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import feign.Logger.Level;
 import feign.Logger.NoOpLogger;
 import feign.ReflectiveFeign.ParseHandlersByName;
 import feign.Request.Options;
@@ -28,6 +21,14 @@ import feign.codec.Decoder;
 import feign.codec.Encoder;
 import feign.codec.ErrorDecoder;
 import feign.querymap.FieldQueryMapEncoder;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static feign.ExceptionPropagationPolicy.NONE;
 
 /**
@@ -270,23 +271,34 @@ public abstract class Feign {
     }
 
     public Feign build() {
+      // 客户端
       Client client = Capability.enrich(this.client, capabilities);
+      // 重试器
       Retryer retryer = Capability.enrich(this.retryer, capabilities);
+      // 请求拦截器
       List<RequestInterceptor> requestInterceptors = this.requestInterceptors.stream()
           .map(ri -> Capability.enrich(ri, capabilities))
           .collect(Collectors.toList());
+      // 日志
       Logger logger = Capability.enrich(this.logger, capabilities);
+      // 契约
       Contract contract = Capability.enrich(this.contract, capabilities);
       Options options = Capability.enrich(this.options, capabilities);
+      // 编码器
       Encoder encoder = Capability.enrich(this.encoder, capabilities);
+      // 解码器
       Decoder decoder = Capability.enrich(this.decoder, capabilities);
+      // 调用处理器工厂
       InvocationHandlerFactory invocationHandlerFactory =
           Capability.enrich(this.invocationHandlerFactory, capabilities);
+      // 将对象转换成Map的编码器
       QueryMapEncoder queryMapEncoder = Capability.enrich(this.queryMapEncoder, capabilities);
 
+      // 同步的方法处理器工厂
       SynchronousMethodHandler.Factory synchronousMethodHandlerFactory =
           new SynchronousMethodHandler.Factory(client, retryer, requestInterceptors, logger,
               logLevel, decode404, closeAfterDecode, propagationPolicy, forceDecoding);
+      // 根据名字解析处理器
       ParseHandlersByName handlersByName =
           new ParseHandlersByName(contract, options, encoder, decoder, queryMapEncoder,
               errorDecoder, synchronousMethodHandlerFactory);
