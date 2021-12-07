@@ -168,7 +168,7 @@ public class SpringMvcContract extends Contract.BaseContract
             RequestMapping classAnnotation = findMergedAnnotation(clz, RequestMapping.class);
             // 如果指定，则在类注释前添加路径，
             if (classAnnotation != null && classAnnotation.value().length > 0) {
-                // Force-Spring 知识点：FeignClient的类上@RequestMapping中value只允许一个值
+                // Force-Spring 知识点：FeignClient的类上@RequestMapping中value只解析第一个值
                 String pathValue = emptyToNull(classAnnotation.value()[0]);
                 // 解析路径
                 pathValue = resolve(pathValue);

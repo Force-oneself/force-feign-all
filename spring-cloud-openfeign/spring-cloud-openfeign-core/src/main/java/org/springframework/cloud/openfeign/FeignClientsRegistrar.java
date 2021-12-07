@@ -227,6 +227,7 @@ class FeignClientsRegistrar
 		// 封装FactoryBean的BeanDefinitionBuilder
 		BeanDefinitionBuilder definition = BeanDefinitionBuilder
 				.genericBeanDefinition(clazz, () -> {
+					// url和path配置的属性都可以被Spring解析
 					factoryBean.setUrl(getUrl(beanFactory, attributes));
 					factoryBean.setPath(getPath(beanFactory, attributes));
 					factoryBean.setDecode404(Boolean

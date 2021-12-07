@@ -119,7 +119,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
         if (customizerMap != null) {
             customizerMap.values().stream()
                     .sorted(AnnotationAwareOrderComparator.INSTANCE)
-                    // Force-Spring 拓展点：FeignBuilderCustomizer自定义配置Feign的配置
+                    // Force-Spring 拓展点：FeignBuilderCustomizer自定义配置Feign的Builder配置
                     .forEach(feignBuilderCustomizer -> feignBuilderCustomizer.customize(builder));
         }
     }
@@ -134,7 +134,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
                 FeignClientConfigurer.class);
         setInheritParentContext(feignClientConfigurer.inheritParentConfiguration());
 
-        // 配置各种属性
+        // 配置各种属性，允许覆盖默认配置
         if (properties != null && inheritParentContext) {
             // 是否使用配置文件为默认配置
             if (properties.isDefaultToProperties()) {
@@ -151,6 +151,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
                 configureUsingProperties(
                         properties.getConfig().get(properties.getDefaultConfig()),
                         builder);
+                // 覆盖默认配置
                 configureUsingProperties(properties.getConfig().get(contextId), builder);
                 configureUsingConfiguration(context, builder);
             }
@@ -160,51 +161,57 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
         }
     }
 
-    protected void configureUsingConfiguration(FeignContext context,
-                                               Feign.Builder builder) {
+    protected void configureUsingConfiguration(FeignContext context, Feign.Builder builder) {
+        // 日志级别
         Logger.Level level = getInheritedAwareOptional(context, Logger.Level.class);
         if (level != null) {
             builder.logLevel(level);
         }
+        // 重试器
         Retryer retryer = getInheritedAwareOptional(context, Retryer.class);
         if (retryer != null) {
             builder.retryer(retryer);
         }
-        ErrorDecoder errorDecoder = getInheritedAwareOptional(context,
-                ErrorDecoder.class);
+        // 异常解码器
+        ErrorDecoder errorDecoder = getInheritedAwareOptional(context, ErrorDecoder.class);
         if (errorDecoder != null) {
             builder.errorDecoder(errorDecoder);
         } else {
-            FeignErrorDecoderFactory errorDecoderFactory = getOptional(context,
-                    FeignErrorDecoderFactory.class);
+            // 异常解码器工厂
+            FeignErrorDecoderFactory errorDecoderFactory = getOptional(context, FeignErrorDecoderFactory.class);
             if (errorDecoderFactory != null) {
                 ErrorDecoder factoryErrorDecoder = errorDecoderFactory.create(type);
                 builder.errorDecoder(factoryErrorDecoder);
             }
         }
-        Request.Options options = getInheritedAwareOptional(context,
-                Request.Options.class);
+        // 请求配置
+        Request.Options options = getInheritedAwareOptional(context, Request.Options.class);
         if (options != null) {
             builder.options(options);
+            // 读取超时
             readTimeoutMillis = options.readTimeoutMillis();
+            // 连接超时
             connectTimeoutMillis = options.connectTimeoutMillis();
         }
-        Map<String, RequestInterceptor> requestInterceptors = getInheritedAwareInstances(
-                context, RequestInterceptor.class);
+        // 请求拦截器
+        Map<String, RequestInterceptor> requestInterceptors
+                = getInheritedAwareInstances(context, RequestInterceptor.class);
         if (requestInterceptors != null) {
             List<RequestInterceptor> interceptors = new ArrayList<>(
                     requestInterceptors.values());
             AnnotationAwareOrderComparator.sort(interceptors);
             builder.requestInterceptors(interceptors);
         }
-        QueryMapEncoder queryMapEncoder = getInheritedAwareOptional(context,
-                QueryMapEncoder.class);
+        // 对象转Map编码器
+        QueryMapEncoder queryMapEncoder = getInheritedAwareOptional(context, QueryMapEncoder.class);
         if (queryMapEncoder != null) {
             builder.queryMapEncoder(queryMapEncoder);
         }
         if (decode404) {
+            // 404解码
             builder.decode404();
         }
+        // 异常传播策略
         ExceptionPropagationPolicy exceptionPropagationPolicy = getInheritedAwareOptional(
                 context, ExceptionPropagationPolicy.class);
         if (exceptionPropagationPolicy != null) {
@@ -219,37 +226,44 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
             return;
         }
 
+        // 日志级别
         if (config.getLoggerLevel() != null) {
             builder.logLevel(config.getLoggerLevel());
         }
-
+        // 连接超时
         connectTimeoutMillis = config.getConnectTimeout() != null
-                ? config.getConnectTimeout() : connectTimeoutMillis;
-        readTimeoutMillis = config.getReadTimeout() != null ? config.getReadTimeout()
+                ? config.getConnectTimeout()
+                : connectTimeoutMillis;
+        // 读取超时
+        readTimeoutMillis = config.getReadTimeout() != null
+                ? config.getReadTimeout()
                 : readTimeoutMillis;
 
+        // Client配置信息
         builder.options(new Request.Options(connectTimeoutMillis, TimeUnit.MILLISECONDS,
                 readTimeoutMillis, TimeUnit.MILLISECONDS, true));
-
+        // 重试器
         if (config.getRetryer() != null) {
             Retryer retryer = getOrInstantiate(config.getRetryer());
             builder.retryer(retryer);
         }
-
+        // 异常解码器
         if (config.getErrorDecoder() != null) {
             ErrorDecoder errorDecoder = getOrInstantiate(config.getErrorDecoder());
             builder.errorDecoder(errorDecoder);
         }
 
+        // 添加请求拦截器
         if (config.getRequestInterceptors() != null
                 && !config.getRequestInterceptors().isEmpty()) {
-            // this will add request interceptor to builder, not replace existing
+            // 这会将请求拦截器添加到构建器，而不是替换现有的
             for (Class<RequestInterceptor> bean : config.getRequestInterceptors()) {
                 RequestInterceptor interceptor = getOrInstantiate(bean);
                 builder.requestInterceptor(interceptor);
             }
         }
 
+        // 404解码
         if (config.getDecode404() != null) {
             if (config.getDecode404()) {
                 builder.decode404();
@@ -257,27 +271,33 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
         }
 
         if (Objects.nonNull(config.getEncoder())) {
+            // 编码器
             builder.encoder(getOrInstantiate(config.getEncoder()));
         }
 
+        // 默认的headers
         if (Objects.nonNull(config.getDefaultRequestHeaders())) {
-            builder.requestInterceptor(requestTemplate -> requestTemplate
-                    .headers(config.getDefaultRequestHeaders()));
+            builder.requestInterceptor(requestTemplate ->
+                    requestTemplate.headers(config.getDefaultRequestHeaders()));
         }
 
+        // 默认的参数
         if (Objects.nonNull(config.getDefaultQueryParameters())) {
-            builder.requestInterceptor(requestTemplate -> requestTemplate
-                    .queries(config.getDefaultQueryParameters()));
+            builder.requestInterceptor(requestTemplate ->
+                    requestTemplate.queries(config.getDefaultQueryParameters()));
         }
 
+        // 解码器
         if (Objects.nonNull(config.getDecoder())) {
             builder.decoder(getOrInstantiate(config.getDecoder()));
         }
 
+        // 契约
         if (Objects.nonNull(config.getContract())) {
             builder.contract(getOrInstantiate(config.getContract()));
         }
 
+        // 异常传播策略
         if (Objects.nonNull(config.getExceptionPropagationPolicy())) {
             builder.exceptionPropagationPolicy(config.getExceptionPropagationPolicy());
         }
@@ -285,7 +305,8 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
 
     private <T> T getOrInstantiate(Class<T> tClass) {
         try {
-            return beanFactory != null ? beanFactory.getBean(tClass)
+            return beanFactory != null
+                    ? beanFactory.getBean(tClass)
                     : applicationContext.getBean(tClass);
         } catch (NoSuchBeanDefinitionException e) {
             return BeanUtils.instantiateClass(tClass);
@@ -313,8 +334,7 @@ public class FeignClientFactoryBean implements FactoryBean<Object>, Initializing
         }
     }
 
-    protected <T> Map<String, T> getInheritedAwareInstances(FeignContext context,
-                                                            Class<T> type) {
+    protected <T> Map<String, T> getInheritedAwareInstances(FeignContext context, Class<T> type) {
         if (inheritParentContext) {
             return context.getInstances(contextId, type);
         } else {

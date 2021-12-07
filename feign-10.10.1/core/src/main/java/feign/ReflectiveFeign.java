@@ -168,7 +168,7 @@ public class ReflectiveFeign extends Feign {
         }
 
         public Map<String, MethodHandler> apply(Target target) {
-            // Force-Spring 重点：Spring MVC 注解的解析入口
+            // Force-Spring 重点：Spring MVC 注解SpringMvcContract的解析入口
             List<MethodMetadata> metadata = contract.parseAndValidateMetadata(target.type());
             // 名称与方法处理器到映射
             Map<String, MethodHandler> result = new LinkedHashMap<String, MethodHandler>();
@@ -183,6 +183,7 @@ public class ReflectiveFeign extends Feign {
                 } else {
                     buildTemplate = new BuildTemplateByResolvingArgs(md, queryMapEncoder, target);
                 }
+
                 if (md.isIgnored()) {
                     result.put(md.configKey(), args -> {
                         throw new IllegalStateException(md.configKey() + " is not a method handled by feign");
