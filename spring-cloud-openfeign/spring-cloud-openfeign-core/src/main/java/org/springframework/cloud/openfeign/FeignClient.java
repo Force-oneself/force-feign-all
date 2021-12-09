@@ -16,14 +16,9 @@
 
 package org.springframework.cloud.openfeign;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 import org.springframework.core.annotation.AliasFor;
+
+import java.lang.annotation.*;
 
 /**
  * Annotation for interfaces declaring that a REST client with that interface should be
@@ -40,88 +35,94 @@ import org.springframework.core.annotation.AliasFor;
 @Inherited
 public @interface FeignClient {
 
-	/**
-	 * 带有可选协议前缀的服务名称。 {@link name() name} 的同义词。
-	 * 无论是否提供 url，都必须为所有客户端指定名称。可以指定为属性键，
-	 * 例如：{propertyKey}.
-	 * @return the name of the service with optional protocol prefix
-	 */
-	@AliasFor("name")
-	String value() default "";
+    /**
+     * 带有可选协议前缀的服务名称。 {@link name() name} 的同义词。
+     * 无论是否提供 url，都必须为所有客户端指定名称。可以指定为属性键，
+     * 例如：{propertyKey}.
+     *
+     * @return the name of the service with optional protocol prefix
+     */
+    @AliasFor("name")
+    String value() default "";
 
-	/**
-	 * The service id with optional protocol prefix. Synonym for {@link #value() value}.
-	 * @deprecated use {@link #name() name} instead
-	 * @return the service id with optional protocol prefix
-	 */
-	@Deprecated
-	String serviceId() default "";
+    /**
+     * 带有可选协议前缀的服务 ID。 {@link value() value} 的同义词
+     *
+     * @return the service id with optional protocol prefix
+     * @deprecated use {@link #name() name} instead
+     */
+    @Deprecated
+    String serviceId() default "";
 
-	/**
-	 * 如果存在，这将用作 bean 名称而不是名称，但不会用作服务 ID.
-	 * @return bean name instead of name if present
-	 */
-	String contextId() default "";
+    /**
+     * 如果存在，这将用作 bean 名称而不是名称，但不会用作服务 ID.
+     *
+     * @return bean name instead of name if present
+     */
+    String contextId() default "";
 
-	/**
-	 * @return The service id with optional protocol prefix. Synonym for {@link #value()
-	 * value}.
-	 */
-	@AliasFor("value")
-	String name() default "";
+    /**
+     * @return The service id with optional protocol prefix. Synonym for {@link #value()
+     * value}.
+     */
+    @AliasFor("value")
+    String name() default "";
 
-	/**
-	 * @return the <code>@Qualifier</code> value for the feign client.
-	 */
-	String qualifier() default "";
+    /**
+     * @return the <code>@Qualifier</code> value for the feign client.
+     */
+    String qualifier() default "";
 
-	/**
-	 * @return an absolute URL or resolvable hostname (the protocol is optional).
-	 */
-	String url() default "";
+    /**
+     * @return 绝对 URL 或可解析的主机名 (the protocol is optional).
+     */
+    String url() default "";
 
-	/**
-	 * @return whether 404s should be decoded instead of throwing FeignExceptions
-	 */
-	boolean decode404() default false;
+    /**
+     * @return 是否应该解码 404s 而不是抛出 FeignExceptions
+     */
+    boolean decode404() default false;
 
-	/**
-	 * A custom configuration class for the feign client. Can contain override
-	 * <code>@Bean</code> definition for the pieces that make up the client, for instance
-	 * {@link feign.codec.Decoder}, {@link feign.codec.Encoder}, {@link feign.Contract}.
-	 *
-	 * @see FeignClientsConfiguration for the defaults
-	 * @return list of configurations for feign client
-	 */
-	Class<?>[] configuration() default {};
+    /**
+     * feign 客户端的自定义配置类。
+     * 可以包含组成客户端的部分的覆盖 <code>@Bean<code> 定义，
+     * 例如
+     * {@link feign.codec.Decoder}
+     * {@link feign.codec.Encoder}
+     * {@link feign.Contract}
+     *
+     * @return list of configurations for feign client
+     * @see FeignClientsConfiguration for the defaults
+     */
+    Class<?>[] configuration() default {};
 
-	/**
-	 * Fallback class for the specified Feign client interface. The fallback class must
-	 * implement the interface annotated by this annotation and be a valid spring bean.
-	 * @return fallback class for the specified Feign client interface
-	 */
-	Class<?> fallback() default void.class;
+    /**
+     * 指定 Feign 客户端接口的回退类。回退类必须实现这个注解所注解的接口，并且是一个有效的 spring bean。
+     *
+     * @return fallback class for the specified Feign client interface
+     */
+    Class<?> fallback() default void.class;
 
-	/**
-	 * Define a fallback factory for the specified Feign client interface. The fallback
-	 * factory must produce instances of fallback classes that implement the interface
-	 * annotated by {@link FeignClient}. The fallback factory must be a valid spring bean.
-	 *
-	 * @see feign.hystrix.FallbackFactory for details.
-	 * @see FallbackFactory for details.
-	 * @return fallback factory for the specified Feign client interface
-	 */
-	Class<?> fallbackFactory() default void.class;
+    /**
+     * 为指定的 feign 客户端接口定义一个回退工厂。回退工厂必须生成回退类的实例，
+     * 这些实例实现由 {@link feignclient} 注释的接口。回退工厂必须是有效的 spring bean。
+     *
+     * @return fallback factory for the specified Feign client interface
+     * @see feign.hystrix.FallbackFactory for details.
+     * @see FallbackFactory for details.
+     */
+    Class<?> fallbackFactory() default void.class;
 
-	/**
-	 * @return path prefix to be used by all method-level mappings. Can be used with or
-	 * without <code>@RibbonClient</code>.
-	 */
-	String path() default "";
+    /**
+     * @return 所有方法级映射使用的路径前缀。可以使用或不使用 <code>@RibbonClient<code>。
+     */
+    String path() default "";
 
-	/**
-	 * @return whether to mark the feign proxy as a primary bean. Defaults to true.
-	 */
-	boolean primary() default true;
+    /**
+     * 设置为false存在fallback将会导致多个Bean无法注入
+     *
+     * @return 是否将 feign 代理标记为主要 bean。默认为真。
+     */
+    boolean primary() default true;
 
 }

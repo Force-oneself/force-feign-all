@@ -16,13 +16,9 @@
 
 package org.springframework.cloud.openfeign;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 import org.springframework.context.annotation.Import;
+
+import java.lang.annotation.*;
 
 /**
  * Scans for interfaces that declare they are feign clients (via
@@ -41,53 +37,47 @@ import org.springframework.context.annotation.Import;
 @Import(FeignClientsRegistrar.class)
 public @interface EnableFeignClients {
 
-	/**
-	 * Alias for the {@link #basePackages()} attribute. Allows for more concise annotation
-	 * declarations e.g.: {@code @ComponentScan("org.my.pkg")} instead of
-	 * {@code @ComponentScan(basePackages="org.my.pkg")}.
-	 *
-	 * @return the array of 'basePackages'.
-	 */
-	String[] value() default {};
+    /**
+     * {@link basePackages()} 属性的别名。允许更简洁的注释声明，
+     * 例如：{@code @ComponentScan("org.my.pkg")}
+     * 而不是 {@code @ComponentScan(basePackages="org.my.pkg")}。
+     *
+     * @return the array of 'basePackages'.
+     */
+    String[] value() default {};
 
-	/**
-	 * Base packages to scan for annotated components.
-	 * <p>
-	 * {@link #value()} is an alias for (and mutually exclusive with) this attribute.
-	 * <p>
-	 * Use {@link #basePackageClasses()} for a type-safe alternative to String-based
-	 * package names.
-	 *
-	 * @return the array of 'basePackages'.
-	 */
-	String[] basePackages() default {};
+    /**
+     * 用于扫描带注释组件的基本包。
+     * <p> {@link value()} 是此属性的别名（并与之互斥）。
+     * <p> 使用 {@link basePackageClasses()} 作为基于字符串的包名称的类型安全替代方案。
+     *
+     * @return the array of 'basePackages'.
+     */
+    String[] basePackages() default {};
 
-	/**
-	 * Type-safe alternative to {@link #basePackages()} for specifying the packages to
-	 * scan for annotated components. The package of each class specified will be scanned.
-	 * <p>
-	 * Consider creating a special no-op marker class or interface in each package that
-	 * serves no purpose other than being referenced by this attribute.
-	 *
-	 * @return the array of 'basePackageClasses'.
-	 */
-	Class<?>[] basePackageClasses() default {};
+    /**
+     * {@link basePackages()} 的类型安全替代方案，用于指定要扫描带注释组件的包。将扫描指定的每个类的包。
+     * <p> 考虑在每个包中创建一个特殊的无操作标记类或接口，除了被此属性引用外，没有其他用途。
+     *
+     * @return the array of 'basePackageClasses'.
+     */
+    Class<?>[] basePackageClasses() default {};
 
-	/**
-	 * A custom <code>@Configuration</code> for all feign clients. Can contain override
-	 * <code>@Bean</code> definition for the pieces that make up the client, for instance
-	 * {@link feign.codec.Decoder}, {@link feign.codec.Encoder}, {@link feign.Contract}.
-	 *
-	 * @return list of default configurations
-	 * @see FeignClientsConfiguration for the defaults
-	 */
-	Class<?>[] defaultConfiguration() default {};
+    /**
+     * 所有 feign 客户端的自定义 <code>@Configuration<code>。
+     * 可以包含组成客户端的部分的覆盖 <code>@Bean<code> 定义，
+     * 例如 {@link feign.codec.Decoder}、{@link feign.codec.Encoder}、{@link feign.Contract} .
+     *
+     * @return list of default configurations
+     * @see FeignClientsConfiguration for the defaults
+     */
+    Class<?>[] defaultConfiguration() default {};
 
-	/**
-	 * 用@FeignClient 注释的类列表。如果不为空，则禁用类路径扫描.
-	 *
-	 * @return list of FeignClient classes
-	 */
-	Class<?>[] clients() default {};
+    /**
+     * 用@FeignClient 注释的类列表。如果不为空，则禁用类路径扫描.
+     *
+     * @return list of FeignClient classes
+     */
+    Class<?>[] clients() default {};
 
 }
